@@ -75,7 +75,22 @@ class Robot {
             gl.glRotated(angleView,0,0,1);
             
             //checkDirection(gl, glu, glut);
-        
+            drawBottom(gl,glu,glut,tAnim);
+            gl.glTranslated(0,0,0.1);
+            drawTorso(gl,glu,glut,tAnim);  
+
+            gl.glTranslated(0,0,0.15);
+            gl.glTranslated(0,0,0.1);
+            drawHead(gl,glu,glut,tAnim);
+            gl.glTranslated(0,0,-0.15);
+            
+            gl.glRotated(-angleView,0,0,1);
+            gl.glTranslated(-pos[0],-pos[1],-pos[2]);
+            
+        gl.glPopMatrix();
+    }
+    
+    private void drawBottom(GL2 gl, GLU glu, GLUT glut, float tAnim){
             gl.glTranslated(0,0,hLegs);
             gl.glRotated(angleLegs,1,0,0);
             gl.glTranslated(0,0,-hLegs);
@@ -90,31 +105,6 @@ class Robot {
             gl.glTranslated(wLegs,0,0);
             gl.glTranslated(0,0,hLegs);
             gl.glRotated(angleLegs,1,0,0);
-            
-            gl.glTranslated(0,0,0.1);
-            drawTorso(gl,glu,glut,tAnim);
-            
-            gl.glTranslated(0,0,hTorso);
-            gl.glTranslated(0,0,-0.1);
-            gl.glTranslated(0.5*wTorso + 0.05,0,0);
-            gl.glRotated(angleArms - 90,1,0,0);
-            drawArm(gl,glu,glut,tAnim);
-            gl.glRotated(-2*angleArms,1,0,0);
-            gl.glTranslated(-2*(0.5*wTorso + 0.05),0,0);
-            drawArm(gl,glu,glut,tAnim);
-            gl.glTranslated(0.5*wTorso + 0.05,0,0);
-            gl.glRotated(angleArms + 90,1,0,0);
-            gl.glTranslated(0,0,0.1);
-
-            gl.glTranslated(0,0,0.15);
-            gl.glTranslated(0,0,0.1);
-            drawHead(gl,glu,glut,tAnim);
-            gl.glTranslated(0,0,-0.15);
-            
-            gl.glRotated(-angleView,0,0,1);
-            gl.glTranslated(-pos[0],-pos[1],-pos[2]);
-            
-        gl.glPopMatrix();
     }
     
     private void drawLeg(GL2 gl, GLU glu, GLUT glut, float tAnim){ 
@@ -131,6 +121,18 @@ class Robot {
         glut.glutSolidCube(1);
         gl.glScaled(1/wTorso,1/dTorso,1/hTorso);
         gl.glTranslated(0,0,-0.5*hTorso);
+        
+        gl.glTranslated(0,0,hTorso);
+        gl.glTranslated(0,0,-0.1);
+        gl.glTranslated(0.5*wTorso + 0.05,0,0);
+        gl.glRotated(angleArms - 90,1,0,0);
+        drawArm(gl,glu,glut,tAnim);
+        gl.glRotated(-2*angleArms,1,0,0);
+        gl.glTranslated(-2*(0.5*wTorso + 0.05),0,0);
+        drawArm(gl,glu,glut,tAnim);
+        gl.glTranslated(0.5*wTorso + 0.05,0,0);
+        gl.glRotated(angleArms + 90,1,0,0);
+        gl.glTranslated(0,0,0.1);
     }
     
     private void drawArm(GL2 gl, GLU glu, GLUT glut, float tAnim){
