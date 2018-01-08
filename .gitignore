@@ -23,3 +23,5 @@ hs_err_pid*
 !jogl-all.jar
 !RobotRaceLibrary.jar
 !lib/*
+*/built-jar.properties
+*/private.properties
