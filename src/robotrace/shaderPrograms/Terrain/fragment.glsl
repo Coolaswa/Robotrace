@@ -2,7 +2,6 @@
 varying vec3 P;
 varying vec3 N; // fragment normal in eye space.
 uniform sampler2D texture;
-varying vec4 color;
 
 vec4 shading(vec3 P, vec3 N, gl_LightSourceParameters light, gl_MaterialParameters mat){
 	vec4 result = vec4(0,0,0,1);
@@ -28,6 +27,6 @@ vec4 shading(vec3 P, vec3 N, gl_LightSourceParameters light, gl_MaterialParamete
 void main() {
 	gl_LightSourceParameters light = gl_LightSource[0];
 	gl_MaterialParameters mat = gl_FrontMaterial;
-        //vec4 color = texture2D(texture,gl_TexCoord[0].st);
+        vec4 color = texture2D(texture,gl_TexCoord[0].st);
 	gl_FragColor = shading(P, N, light, mat) * color;
 }
